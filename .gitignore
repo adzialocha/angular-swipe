@@ -1,0 +1,11 @@
+node_modules
+.tmp
+bower_components
+src
+Gruntfile.js
+package.json
+.jshintrc
+.gitattributes
+.editorconfig
+.bowerrc
+test
