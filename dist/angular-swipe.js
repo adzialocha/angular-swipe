@@ -4,9 +4,9 @@
 
   /* global -ngSwipe */
 
-  var ngSwipe = angular.module('ngSwipe', []);
+  var ngSwipe = angular.module('swipe', []);
 
-  ngSwipe.factory('$swipe', [ function() {
+  ngSwipe.factory('swipe', [ function() {
 
     // The total distance in any direction before we make the call on swipe
 
@@ -83,7 +83,7 @@
   }]);
 
   function makeSwipeDirective(directiveName, direction, axis, eventName) {
-    ngSwipe.directive(directiveName, ['$parse', '$swipe', function($parse, $swipe) {
+    ngSwipe.directive(directiveName, ['$parse', 'swipe', function($parse, swipe) {
 
       var MAX_OTHER_AXIS_DISTANCE = 75;
       var MAX_RATIO = 0.3;
@@ -116,7 +116,7 @@
 
         }
 
-        $swipe.bind(element, {
+        swipe.bind(element, {
           'start': function(coords, event) {
             startCoords = coords;
             valid = true;
