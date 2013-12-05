@@ -37,6 +37,9 @@
         var lastPos;
         // Whether a swipe is active.
         var active = false;
+        // Decide where we are going
+        var isDecided = false;
+        var isVertical = true;
 
         element.on('touchstart mousedown', function(event) {
           startCoords = getCoordinates(event);
@@ -66,7 +69,18 @@
 
           if (totalX < MOVE_BUFFER_RADIUS && totalY < MOVE_BUFFER_RADIUS) {
             return;
+          } else {
+            if (! isDecided){
+              if (totalX >= MOVE_BUFFER_RADIUS){
+                isVertical = false;
+              } else {
+                isVertical = true;
+              }
+              isDecided = true;
+            }
           }
+
+          event.isVertical = isVertical;
 
           event.preventDefault();
           eventHandlers['move'] && eventHandlers['move'](coords, event);
@@ -75,6 +89,7 @@
 
         element.on('touchend mouseup', function(event) {
           if (!active) return;
+          event.isVertical = isVertical;
           active = false;
           eventHandlers['end'] && eventHandlers['end'](getCoordinates(event), event);
         });
