@@ -75,6 +75,7 @@
             if (! isDecided){
               if (totalX >= MOVE_BUFFER_RADIUS){
                 isVertical = false;
+                event.preventDefault();
               } else {
                 isVertical = true;
               }
@@ -84,7 +85,6 @@
 
           event.isVertical = isVertical;
 
-          event.preventDefault();
           eventHandlers['move'] && eventHandlers['move'](coords, event);
 
         });
