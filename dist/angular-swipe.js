@@ -46,6 +46,8 @@
           active = true;
           totalX = 0;
           totalY = 0;
+          isDecided = false;
+          isVertical = true;
           lastPos = startCoords;
           eventHandlers['start'] && eventHandlers['start'](startCoords, event);
         });
