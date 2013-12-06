@@ -89,8 +89,6 @@
             }
           }
 
-          event.preventDefault();
-
           event.isVertical = isVertical;
 
           eventHandlers['move'] && eventHandlers['move'](coords, event);
