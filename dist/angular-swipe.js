@@ -33,8 +33,6 @@
         var totalX, totalY;
         // Coordinates of the start position.
         var startCoords;
-        // Last event's position.
-        var lastPos;
         // Whether a swipe is active.
         var active = false;
         // Decide where we are going
@@ -48,7 +46,6 @@
           totalY = 0;
           isDecided = false;
           isVertical = true;
-          lastPos = startCoords;
           eventHandlers['start'] && eventHandlers['start'](startCoords, event);
         });
 
@@ -64,22 +61,21 @@
 
           var coords = getCoordinates(event);
 
-          totalX += Math.abs(coords.x - lastPos.x);
-          totalY += Math.abs(coords.y - lastPos.y);
-
-          lastPos = coords;
+          totalX = Math.abs(coords.x - startCoords.x);
+          totalY = Math.abs(coords.y - startCoords.y);
 
           if (totalX < MOVE_BUFFER_RADIUS && totalY < MOVE_BUFFER_RADIUS) {
             return;
           } else {
             if (! isDecided){
-              if (totalX >= MOVE_BUFFER_RADIUS){
+              if (totalX >= MOVE_BUFFER_RADIUS * 4){
                 isVertical = false;
+                isDecided = true;
                 event.preventDefault();
-              } else {
+              } else if (totalY >= MOVE_BUFFER_RADIUS){
                 isVertical = true;
+                isDecided = true;
               }
-              isDecided = true;
             }
           }
 
