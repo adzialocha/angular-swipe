@@ -12,6 +12,10 @@
 
     var MOVE_BUFFER_RADIUS = 10;
 
+    // Detection ratio deciding wether it is a vertical or horizontal swipe
+
+    var AXIS_RATIO = 4;
+
     function getCoordinates(event) {
       var touches = event.touches && event.touches.length ? event.touches : [event];
       var e = (event.changedTouches && event.changedTouches[0]) ||
@@ -31,8 +35,9 @@
 
         // Absolute total movement
         var totalX, totalY;
-        // Coordinates of the start position.
+        // Coordinates of the start and last position.
         var startCoords;
+        var lastPos;
         // Whether a swipe is active.
         var active = false;
         // Decide where we are going
@@ -46,6 +51,7 @@
           totalY = 0;
           isDecided = false;
           isVertical = true;
+          lastPos = startCoords;
           eventHandlers['start'] && eventHandlers['start'](startCoords, event);
         });
 
@@ -61,21 +67,23 @@
 
           var coords = getCoordinates(event);
 
-          totalX = Math.abs(coords.x - startCoords.x);
-          totalY = Math.abs(coords.y - startCoords.y);
+          totalX += Math.abs(coords.x - lastPos.x);
+          totalY += Math.abs(coords.y - lastPos.y);
 
-          if (totalX < MOVE_BUFFER_RADIUS && totalY < MOVE_BUFFER_RADIUS) {
+          lastPos = coords;
+
+          if (totalX < (MOVE_BUFFER_RADIUS * AXIS_RATIO) && totalY < MOVE_BUFFER_RADIUS) {
             return;
           } else {
             if (! isDecided){
-              if (totalX >= MOVE_BUFFER_RADIUS * 4){
+              if (totalX >= MOVE_BUFFER_RADIUS * AXIS_RATIO){
                 isVertical = false;
-                isDecided = true;
                 event.preventDefault();
-              } else if (totalY >= MOVE_BUFFER_RADIUS){
+              } else {
                 isVertical = true;
-                isDecided = true;
               }
+
+              isDecided = true;
             }
           }
 
