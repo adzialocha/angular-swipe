@@ -8,13 +8,8 @@
 
   ngSwipe.factory('swipe', [ function() {
 
-    // The total distance in any direction before we make the call on swipe
-
     var MOVE_BUFFER_RADIUS = 10;
-
-    // Detection ratio deciding wether it is a vertical or horizontal swipe
-
-    var AXIS_RATIO = 4;
+    var MAX_RATIO = 0.6;
 
     function getCoordinates(event) {
       var touches = event.touches && event.touches.length ? event.touches : [event];
@@ -35,7 +30,7 @@
 
         // Absolute total movement
         var totalX, totalY;
-        // Coordinates of the start and last position.
+        // Coordinates of the start position.
         var startCoords;
         var lastPos;
         // Whether a swipe is active.
@@ -72,13 +67,20 @@
 
           lastPos = coords;
 
-          if (totalX < (MOVE_BUFFER_RADIUS * AXIS_RATIO) && totalY < MOVE_BUFFER_RADIUS) {
+          if (totalX < MOVE_BUFFER_RADIUS && totalY < MOVE_BUFFER_RADIUS) {
             return;
           } else {
             if (! isDecided){
-              if (totalX >= MOVE_BUFFER_RADIUS * AXIS_RATIO){
+
+              var deltaX, deltaY, ratio;
+
+              deltaX = Math.abs(coords.x - startCoords.x);
+              deltaY = Math.abs(coords.y - startCoords.y);
+
+              ratio = deltaY / deltaX;
+
+              if (ratio < MAX_RATIO){
                 isVertical = false;
-                event.preventDefault();
               } else {
                 isVertical = true;
               }
@@ -86,6 +88,8 @@
               isDecided = true;
             }
           }
+
+          event.preventDefault();
 
           event.isVertical = isVertical;
 
