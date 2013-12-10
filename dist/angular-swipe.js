@@ -80,6 +80,7 @@
               ratio = deltaY / deltaX;
 
               if (ratio < MAX_RATIO){
+                event.preventDefault();
                 isVertical = false;
               } else {
                 isVertical = true;
@@ -90,9 +91,7 @@
           }
 
           event.isVertical = isVertical;
-
           eventHandlers['move'] && eventHandlers['move'](coords, event);
-
         });
 
         element.on('touchend mouseup', function(event) {
