@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "main": "./dist/angular-swipe.js",
   "dependencies": {
-    "angular": "1.2.7"
+    "angular": "1.2.8"
   },
   "devDependencies": {}
 }
