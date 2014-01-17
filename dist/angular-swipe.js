@@ -8,8 +8,8 @@
 
   ngSwipe.factory('swipe', [ function() {
 
-    var MOVE_BUFFER_RADIUS = 20;
-    var MAX_RATIO = 0.4;
+    var MOVE_BUFFER_RADIUS = 40;
+    var MAX_RATIO = 0.3;
 
     function getCoordinates(event) {
       var touches = event.touches && event.touches.length ? event.touches : [event];
