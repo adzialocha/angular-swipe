@@ -7,7 +7,7 @@ Simple vertical and horizontal swipe gesture directives and swipe service for an
 
 Add this line to your *bower.json* dependencies
 
-    "angular-swipe":  "git@github.com:marmorkuchen-net/angular-swipe.git"
+    "angular-swipe":  "https://github.com/marmorkuchen-net/angular-swipe.git"
     
 and run *bower install* afterwards.
 
