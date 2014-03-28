@@ -162,8 +162,12 @@
 
   // Left is negative X-coordinate, right is positive
 
-  makeSwipeDirective('ngSwipeLeft', -1, false, 'swipeleft');
-  makeSwipeDirective('ngSwipeRight', 1, false, 'swiperight');
+  try {
+    angular.module("ngTouch");
+  } catch(err) {
+    makeSwipeDirective('ngSwipeLeft', -1, false, 'swipeleft');
+    makeSwipeDirective('ngSwipeRight', 1, false, 'swiperight');
+  }
 
   makeSwipeDirective('ngSwipeUp', -1, true, 'swipeup');
   makeSwipeDirective('ngSwipeDown', 1, true, 'swipedown');
