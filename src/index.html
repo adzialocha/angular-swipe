@@ -29,7 +29,13 @@
 
   <body ng-controller="AppCtrl">
     <div class="container" ng-swipe-right="swipe($event)">
-      <h1>Test</h1>
+      <h1>Test Horizontal</h1>
+      <input type="text" ng-model="inputtest" />
+      <p>{{ message }}</p>
+    </div>
+    <div class="container" ng-swipe-up="swipe($event)">
+      <h1>Test Vertical</h1>
+      <input type="text" ng-model="inputtest" />
       <p>{{ message }}</p>
     </div>
   </body>
