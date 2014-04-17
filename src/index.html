@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html ng-app="app">
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>angular swipe</title>
+
+    <script src="../angular/angular.js"></script>
+    <script src="angular-swipe.js"></script>
+
+    <script src="app.js"></script>
+
+    <style>
+
+      .container
+      {
+        width: 200px;
+        height: 150px;
+        border: solid black 2px;
+        background-color: green;
+        margin: 100px auto;
+      }
+
+    </style>
+
+  </head>
+
+  <body ng-controller="AppCtrl">
+    <div class="container" ng-swipe-right="swipe($event)">
+      <h1>Test</h1>
+      <p>{{ message }}</p>
+    </div>
+  </body>
+
+</html>
