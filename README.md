@@ -23,3 +23,7 @@ and run *bower install* afterwards.
 #### Service
 
 * swipe
+
+#### Bugs
+
+* ng-swipe-up and ng-swipe-down uses preventDefault when you start swiping. This prevent clicks from working and giving focus to input fields. Adding a noPreventDefault class to these elements will not preventDefault when the swipe start on them and thus allow clicks to work.

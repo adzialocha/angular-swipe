@@ -140,7 +140,7 @@
 
         swipe.bind(element, {
           'start': function(coords, event) {
-            if (axis) {
+            if (axis && (!event.target.className || event.target.className && event.target.className.match('noPreventDefault') == null)) {
               event.preventDefault();
             }
             startCoords = coords;
