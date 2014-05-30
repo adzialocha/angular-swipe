@@ -1,6 +1,6 @@
 {
   "name": "angular-swipe",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "./dist/angular-swipe.js",
   "dependencies": {
     "angular": "1.2.16"
