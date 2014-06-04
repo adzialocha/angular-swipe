@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('app', [ 'swipe' ]);
 
 app.controller('AppCtrl', function AppCtrl($scope) {

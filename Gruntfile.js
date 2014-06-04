@@ -79,9 +79,7 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             },
             all: [
-                'Gruntfile.js',
-                '<%= yeoman.app %>/{,*/}*.js',
-                'test/spec/{,*/}*.js'
+                '<%= yeoman.app %>/{,*/}*.js'
             ]
         },
 
