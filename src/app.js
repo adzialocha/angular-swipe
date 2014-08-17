@@ -6,7 +6,7 @@ app.controller('AppCtrl', function AppCtrl($scope) {
   $scope.message = 'Hey!';
   $scope.inputtest = '';
 
-  $scope.swipe = function ($event) {
+  $scope.swipe = function($event) {
     console.log($event);
   };
 
