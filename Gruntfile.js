@@ -83,19 +83,6 @@ module.exports = function (grunt) {
             ]
         },
 
-        mocha: {
-            all: {
-                options: {
-                    run: true,
-                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
-                },
-                scripts: [
-                    'src/*.js',
-                    'test/spec/*.js'
-                ]
-            }
-        },
-
         copy: {
             dist: {
                 files: [{
@@ -145,12 +132,6 @@ module.exports = function (grunt) {
         ]);
     });
 
-    grunt.registerTask('test', [
-        'clean:server',
-        'connect:test',
-        'mocha'
-    ]);
-
     grunt.registerTask('build', [
         'clean:dist',
         'concat',
@@ -160,7 +141,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'jshint',
-        'test',
         'build'
     ]);
 };

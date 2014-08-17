@@ -57,8 +57,13 @@
 
         element.on('touchmove mousemove', function(event) {
 
-          if (!active) return;
-          if (!startCoords) return;
+          if (! active) {
+            return;
+          }
+
+          if (! startCoords) {
+            return;
+          }
 
           var coords = getCoordinates(event);
 
@@ -95,7 +100,9 @@
         });
 
         element.on('touchend mouseup', function(event) {
-          if (!active) return;
+          if (! active){
+            return;
+          }
           event.isVertical = isVertical;
           active = false;
           eventHandlers['end'] && eventHandlers['end'](getCoordinates(event), event);
@@ -119,7 +126,9 @@
 
         function validSwipe(coords) {
 
-          if (!startCoords || !valid) return false;
+          if (! startCoords || ! valid){
+            return false;
+          }
 
           var deltaY = (coords.y - startCoords.y) * direction;
           var deltaX = (coords.x - startCoords.x) * direction;
@@ -140,13 +149,14 @@
 
         swipe.bind(element, {
           'start': function(coords, event) {
-            if (axis && (!event.target.className || event.target.className && event.target.className.match('noPreventDefault') == null)) {
-              event.preventDefault();
+            if (axis && (! event.target.className || event.target.className &&
+              event.target.className.match('noPreventDefault') === null)) {
+                event.preventDefault();
             }
             startCoords = coords;
             valid = true;
           },
-          'cancel': function(event) {
+          'cancel': function() {
             valid = false;
           },
           'end': function(coords, event) {
