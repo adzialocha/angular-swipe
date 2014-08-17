@@ -1,14 +1,14 @@
 angular-swipe
 =============
 
-Simple vertical and horizontal swipe gesture directives and swipe service for angular js 1.2. Small extension of the angular $swipe service.
+Simple vertical/horizontal swipe gesture directives and a swipe service for angular js >= 1.2. Small extension of the existing angular $swipe service.
 
 ## Install
 
 Add this line to your *bower.json* dependencies
 
-    "angular-swipe":  "https://github.com/marmorkuchen-net/angular-swipe.git"
-    
+    "angular-swipe": "~0.0.6"
+
 and run *bower install* afterwards.
 
 ## Usage
