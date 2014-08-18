@@ -61,7 +61,7 @@ app.controller('AppCtrl', function AppCtrl($scope) {
   $scope.swipe = function($event) {
     console.log($event);
   };
-})>
+})
 ```
 
 ## Known issues and workarounds
