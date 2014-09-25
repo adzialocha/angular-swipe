@@ -20,5 +20,9 @@
   "strict": true,
   "trailing": true,
   "smarttabs": true,
+  "jquery": true,
+  "globals": {
+    "angular": false
+  },
   "predef": [ "angular" ]
 }

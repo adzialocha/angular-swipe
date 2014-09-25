@@ -102,7 +102,7 @@ module.exports = function (grunt) {
             separator: ';'
           },
           dist: {
-            src: ['<%= yeoman.app %>/**/*.js'],
+            src: ['<%= yeoman.app %>/angular-swipe.js'],
             dest: '<%= yeoman.dist %>/angular-swipe.min.js'
           }
         },
