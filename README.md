@@ -1,7 +1,7 @@
 angular-swipe
 =============
 
-Simple vertical/horizontal swipe gesture directives and a swipe service for angular js >= 1.2. Small extension of the existing angular $swipe service.
+Simple vertical/horizontal swipe gesture directives and a swipe service for angular js >= 1.3. Small extension of the existing angular $swipe service.
 
 ## Install
 
@@ -9,7 +9,7 @@ Simple vertical/horizontal swipe gesture directives and a swipe service for angu
 
 >
 ``` JavaScript
-"angular-swipe": "~0.0.6"
+"angular-swipe": "~0.0.8"
 ```
 
 + Include the required source file (this path or similar)
