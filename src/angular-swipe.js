@@ -150,9 +150,8 @@
         swipe.bind(element, {
           'start': function(coords, event) {
             var className = event.target.getAttribute('class');
-            if (axis && (! className || className &&
-              className.match('noPreventDefault') === null)) {
-                event.preventDefault();
+            if (axis && (! className || className && className.match('noPreventDefault') === null)) {
+              event.preventDefault();
             }
             startCoords = coords;
             valid = true;

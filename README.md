@@ -9,7 +9,7 @@ Simple vertical/horizontal swipe gesture directives and a swipe service for angu
 
 >
 ``` JavaScript
-"angular-swipe": "~0.0.8"
+"angular-swipe": "~0.0.9"
 ```
 
 + Include the required source file (this path or similar)
