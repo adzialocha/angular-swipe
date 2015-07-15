@@ -1,7 +1,7 @@
 angular-swipe
 =============
 
-Simple vertical/horizontal swipe gesture directives and a swipe service for angular js >= 1.3. Small extension of the existing angular $swipe service.
+Simple vertical/horizontal swipe gesture directives and a swipe service for angular js >= 1.4. Small extension of the existing angular $swipe service.
 
 ## Install
 
@@ -9,7 +9,7 @@ Simple vertical/horizontal swipe gesture directives and a swipe service for angu
 
 >
 ``` JavaScript
-"angular-swipe": "~0.0.9"
+"angular-swipe": "~0.1.0"
 ```
 
 + Include the required source file (this path or similar)
@@ -38,6 +38,10 @@ angular.module('app', ['swipe']);
 * ng-swipe-down
 * ng-swipe-left
 * ng-swipe-right
+
+#### Directive Attributes
+
+`ng-swipe-disable-mouse` "This attribute is useful for text that should still be selectable by the mouse and not trigger the swipe action."
 
 #### Service
 

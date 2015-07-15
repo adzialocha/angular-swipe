@@ -11,12 +11,24 @@
     var MOVE_BUFFER_RADIUS = 40;
     var MAX_RATIO = 0.3;
 
+    var POINTER_EVENTS = {
+      'mouse': {
+        start: 'mousedown',
+        move: 'mousemove',
+        end: 'mouseup'
+      },
+      'touch': {
+        start: 'touchstart',
+        move: 'touchmove',
+        end: 'touchend',
+        cancel: 'touchcancel'
+      }
+    };
+
     function getCoordinates(event) {
-      var touches = event.touches && event.touches.length ? event.touches : [event];
-      var e = (event.changedTouches && event.changedTouches[0]) ||
-          (event.originalEvent && event.originalEvent.changedTouches &&
-              event.originalEvent.changedTouches[0]) ||
-          touches[0].originalEvent || touches[0];
+      var originalEvent = event.originalEvent || event;
+      var touches = originalEvent.touches && originalEvent.touches.length ? originalEvent.touches : [originalEvent];
+      var e = (originalEvent.changedTouches && originalEvent.changedTouches[0]) || touches[0];
 
       return {
         x: e.clientX,
@@ -24,9 +36,20 @@
       };
     }
 
+    function getEvents(pointerTypes, eventType) {
+      var res = [];
+      angular.forEach(pointerTypes, function(pointerType) {
+        var eventName = POINTER_EVENTS[pointerType][eventType];
+        if (eventName) {
+          res.push(eventName);
+        }
+      });
+      return res.join(' ');
+    }
+
     return {
 
-      bind: function(element, eventHandlers) {
+      bind: function(element, eventHandlers, pointerTypes) {
 
         // Absolute total movement
         var totalX, totalY;
@@ -39,7 +62,9 @@
         var isDecided = false;
         var isVertical = true;
 
-        element.on('touchstart mousedown', function(event) {
+        pointerTypes = pointerTypes || ['mouse', 'touch'];
+
+        element.on(getEvents(pointerTypes, 'start'), function(event) {
           startCoords = getCoordinates(event);
           active = true;
           totalX = 0;
@@ -50,12 +75,12 @@
           eventHandlers['start'] && eventHandlers['start'](startCoords, event);
         });
 
-        element.on('touchcancel', function(event) {
+        element.on(getEvents(pointerTypes, 'cancel'), function(event) {
           active = false;
           eventHandlers['cancel'] && eventHandlers['cancel'](event);
         });
 
-        element.on('touchmove mousemove', function(event) {
+        element.on(getEvents(pointerTypes, 'move'), function(event) {
 
           if (! active) {
             return;
@@ -99,7 +124,7 @@
           eventHandlers['move'] && eventHandlers['move'](coords, event);
         });
 
-        element.on('touchend mouseup', function(event) {
+        element.on(getEvents(pointerTypes, 'end'), function(event) {
           if (! active){
             return;
           }
@@ -147,6 +172,12 @@
 
         }
 
+        var pointerTypes = ['touch'];
+
+        if (!angular.isDefined(attr['ngSwipeDisableMouse'])) {
+          pointerTypes.push('mouse');
+        }
+
         swipe.bind(element, {
           'start': function(coords, event) {
             var className = event.target.getAttribute('class');
@@ -167,7 +198,7 @@
               });
             }
           }
-        });
+        }, pointerTypes);
       };
     }]);
   }
