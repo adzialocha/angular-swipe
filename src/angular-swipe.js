@@ -149,6 +149,17 @@
 
         var startCoords, valid;
 
+        function checkOverride(element) {
+          do {
+            var className = element.getAttribute('class');
+            if (className && className.match('noPreventDefault') !== null) {
+              return true;
+            }
+            element = element.parentElement;
+          } while (element !== null);
+          return false;
+        }
+
         function validSwipe(coords) {
 
           if (! startCoords || ! valid){
@@ -180,8 +191,7 @@
 
         swipe.bind(element, {
           'start': function(coords, event) {
-            var className = event.target.getAttribute('class');
-            if (axis && (! className || className && className.match('noPreventDefault') === null)) {
+            if (axis && !checkOverride(event.target)) {
               event.preventDefault();
             }
             startCoords = coords;
