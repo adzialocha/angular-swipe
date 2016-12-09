@@ -149,10 +149,10 @@
 
         var startCoords, valid;
 
-        function checkOverride(element) {
+        function checkOverride(element, clazz) {
           do {
             var className = element.getAttribute('class');
-            if (className && className.match('noPreventDefault') !== null) {
+            if (className && className.match(clazz) !== null) {
               return true;
             }
             element = element.parentElement;
@@ -195,11 +195,11 @@
 
         swipe.bind(element, {
           'start': function(coords, event) {
-            if (axis && !checkOverride(event.target)) {
+            if (axis && !checkOverride(event.target, 'noPreventDefault')) {
               event.preventDefault();
             }
             startCoords = coords;
-            valid = true;
+            valid = !checkOverride(event.target, 'noStartDrag');
           },
           'cancel': function() {
             valid = false;

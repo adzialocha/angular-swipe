@@ -71,3 +71,5 @@ app.controller('AppCtrl', function AppCtrl($scope) {
 ## Known issues and workarounds
 
 * ng-swipe-up and ng-swipe-down uses preventDefault when you start swiping. This prevents clicks from giving focus to input fields. Adding a `noPreventDefault` class to these elements will not preventDefault when the swipe start on them and thus allow clicks to work.
+
+* When embedding a Google map you might want to prevent a swipe event specifically inside the map. You can do that by adding the `noStartDrag` class to the Google map HTML element
