@@ -1,14 +1,14 @@
 {
   "name": "angular-swipe",
   "description": "Simple vertical and horizontal swipe gesture directive for angular js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "authors": [
     "marmorkuchen.net <andreas@marmorkuchen.net>"
   ],
-  "homepage": "https://github.com/marmorkuchen-net/angular-swipe",
+  "homepage": "https://github.com/adzialocha/angular-swipe",
   "repository": {
     "type": "git",
-    "url": "git@github.com:marmorkuchen-net/angular-swipe.git"
+    "url": "git@github.com:adzialocha/angular-swipe.git"
   },
   "keywords": [
     "swipe",
@@ -23,7 +23,7 @@
   ],
   "main": "./dist/angular-swipe.js",
   "dependencies": {
-    "angular": "~1.4.x"
+    "angular": "~1.5.x"
   },
   "ignore": [
     ".jshintrc",

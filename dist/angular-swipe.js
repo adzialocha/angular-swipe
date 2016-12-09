@@ -169,18 +169,22 @@
           var deltaY = (coords.y - startCoords.y) * direction;
           var deltaX = (coords.x - startCoords.x) * direction;
 
-          if (! axis){  // horizontal swipe
+          if(axis === null) { // tap
+              return Math.abs(deltaY) < MIN_DISTANCE &&
+                     Math.abs(deltaX) < MIN_DISTANCE;
+          }
+          else if(axis === false) {  // horizontal swipe
             return Math.abs(deltaY) < MAX_OTHER_AXIS_DISTANCE &&
               deltaX > 0 &&
               deltaX > MIN_DISTANCE &&
               Math.abs(deltaY) / deltaX < MAX_RATIO;
-          } else {  // vertical swipe
+          }
+          else {  // vertical swipe
             return Math.abs(deltaX) < MAX_OTHER_AXIS_DISTANCE &&
               deltaY > 0 &&
               deltaY > MIN_DISTANCE &&
               Math.abs(deltaX) / deltaY < MAX_RATIO;
           }
-
         }
 
         var pointerTypes = ['touch'];
@@ -226,5 +230,7 @@
 
   makeSwipeDirective('ngSwipeUp', -1, true, 'swipeup');
   makeSwipeDirective('ngSwipeDown', 1, true, 'swipedown');
+
+  makeSwipeDirective('ngTap', 1, null, 'tap');
 
 })(window, window.angular);
