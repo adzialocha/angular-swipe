@@ -1,5 +1,4 @@
 (function(window, angular, undefined) {
-
   'use strict';
 
   /* global -ngSwipe */
@@ -232,5 +231,4 @@
   makeSwipeDirective('ngSwipeDown', 1, true, 'swipedown');
 
   makeSwipeDirective('ngTap', 1, null, 'tap');
-
 })(window, window.angular);

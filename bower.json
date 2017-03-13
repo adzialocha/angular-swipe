@@ -1,7 +1,7 @@
 {
   "name": "angular-swipe",
   "description": "Simple vertical and horizontal swipe gesture directive for angular js",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "authors": [
     "marmorkuchen.net <andreas@marmorkuchen.net>"
   ],
@@ -23,7 +23,7 @@
   ],
   "main": "./dist/angular-swipe.js",
   "dependencies": {
-    "angular": "~1.5.x"
+    "angular": "~1.6.x"
   },
   "ignore": [
     ".jshintrc",
