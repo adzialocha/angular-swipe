@@ -1,7 +1,7 @@
 angular-swipe
 =============
 
-Simple vertical/horizontal swipe gesture directives and a swipe service for angular js >= 1.5. Small extension of the existing angular $swipe service.
+Simple vertical/horizontal swipe gesture directives and a swipe service for angular js >= 1.6. Small extension of the existing angular $swipe service.
 
 ## Install
 
@@ -9,7 +9,7 @@ Simple vertical/horizontal swipe gesture directives and a swipe service for angu
 
 >
 ``` JavaScript
-"angular-swipe": "~0.2.0"
+"angular-swipe": "~0.2.1"
 ```
 
 + Include the required source file (this path or similar)
@@ -52,9 +52,9 @@ angular.module('app', ['swipe']);
 >
 ```html
 <div class="page" ng-controller="AppCtrl">
-    <div class="container" ng-swipe-up="swipe($event)">
-      <h1>Swipe me up!</h1>
-    </div>
+  <div class="container" ng-swipe-up="swipe($event)">
+    <h1>Swipe me up!</h1>
+  </div>
 </div>
 ```
 
